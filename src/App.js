@@ -1,25 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { View, Panel, PanelHeader, Button, HorizontalScroll, SplitCol } from '@vkontakte/vkui';
+import '@vkontakte/vkui/dist/vkui.css';
+import CatFactsApp from './CatFactsApp';
+import AgeName from './ageName';
 
-function App() {
+const App = () => {
+  const [activePanel, setActivePanel] = useState('main');
+
+  const handlePanelChange = (newPanel) => {
+    setActivePanel(newPanel);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <View activePanel={activePanel}>
+        <Panel id="main">
+          <PanelHeader>Task VK trainee</PanelHeader>
+          <HorizontalScroll>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+              <SplitCol>
+                <Button stretched size="l" onClick={() => handlePanelChange('catFactPanel')}>
+                  Узнай факты о котах
+                </Button>
+              </SplitCol>
+              <SplitCol>
+                <Button stretched size="l" onClick={() => handlePanelChange('agePanel')}>
+                  Узнай возраст по имени
+                </Button>
+              </SplitCol>
+            </div>
+          </HorizontalScroll>
+        </Panel>
+
+      <Panel id="agePanel">
+        <AgeName onPanelChange={handlePanelChange} />
+      </Panel>
+
+      <Panel id="catFactPanel">
+        <CatFactsApp onPanelChange={handlePanelChange} />
+      </Panel>
+    </View>
   );
-}
+};
 
 export default App;
