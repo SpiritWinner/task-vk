@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
-import { View, Panel, PanelHeader, Group, FormLayoutGroup, Input, Button, Header } from '@vkontakte/vkui';
+import { View, Panel, PanelHeader, Group, FormLayoutGroup, Input, Button } from '@vkontakte/vkui';
 
 const AgeName = ({ onPanelChange }) => {
   const { register, handleSubmit, setValue, formState: { errors } } = useForm();

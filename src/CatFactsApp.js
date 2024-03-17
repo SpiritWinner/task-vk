@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useRef} from 'react';
 import { useQuery } from '@tanstack/react-query'
 import { useForm } from 'react-hook-form';
-import { View, Panel, PanelHeader, Group, Input, Button, FormLayoutGroup, Header} from '@vkontakte/vkui';
+import { View, Panel, PanelHeader, Group, Input, Button, FormLayoutGroup} from '@vkontakte/vkui';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import axios from 'axios';
